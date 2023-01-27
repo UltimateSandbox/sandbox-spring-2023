@@ -12,7 +12,7 @@ public class FibonacciNumbers {
         FibonacciNumbers fn = new FibonacciNumbers();
 
         for (int x = 0; x <= 50; x++) {
-            System.out.println("fib(" + x + ") = " + (fn.fib(x)));
+            System.out.println("fib (" + x + ") = " + (fn.fib(x)));
         }
     }
 
