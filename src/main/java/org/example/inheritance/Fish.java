@@ -1,6 +1,6 @@
 package org.example.inheritance;
 
-public class Fish extends Vertebrate {
+public abstract class Fish extends Vertebrate {
 
     protected Boolean hasScales;
 }

@@ -1,6 +1,8 @@
 package org.example.inheritance;
 
-public class Animal {
+public interface Animal {
 
-    private String variable;
+    public void eat();
+    public void reproduce();
+    public void breathe();
 }

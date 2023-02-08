@@ -1,6 +1,6 @@
 package org.example.inheritance;
 
-public class Vertebrate extends Animal {
+public abstract class Vertebrate extends Animal {
 
 
 }
