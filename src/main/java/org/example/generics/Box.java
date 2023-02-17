@@ -3,7 +3,6 @@ package org.example.generics;
 public class Box<T extends Number> {
 
     private T value;
-    Integer i;
 
     public Box() {
         value = null;

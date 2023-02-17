@@ -31,9 +31,12 @@ public class GenericUsage {
                 .boxed()
                 .collect(Collectors.toList());
 
-        // TODO show how to crate these up
-       for(Integer i : numbers) {
-           new Box(i);
-       }
+        System.out.println(numbers);
+
+        numbers.forEach(number -> crate2.addBox(new Box<>(number)));
+
+        System.out.println(crate2);
+
+
     }
 }
