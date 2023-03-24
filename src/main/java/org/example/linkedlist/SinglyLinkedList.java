@@ -36,12 +36,51 @@ public class SinglyLinkedList<E> implements LinkedList<E> {
 
     @Override
     public E pollFirst() {
-        return null;
+
+        E element;
+        if (head == null) {
+            element = null;
+        } else {
+            element = head.element;
+
+            if (head == tail) {
+                head = null;
+                tail = null;
+            } else {
+                Node next = head.next;
+                head.next = null;  // cleanup
+                head = next;
+            }
+        }
+        return element;
     }
 
     @Override
     public E pollLast() {
-        return null;
+
+        E element;
+        if (tail == null) {
+            element = null;
+        } else {
+
+            element = tail.element;
+            if (head == tail) {
+                head = null;
+                tail = null;
+            } else {
+
+                Node current = head; // #2
+                Node previous = head;
+                while (current.next != null) {
+                    previous = current;
+                    current = current.next;
+                }
+                tail = previous; // #3
+                tail.next = null;  // #4
+            }
+        }
+
+        return element;
     }
 
     @Override
@@ -57,16 +96,49 @@ public class SinglyLinkedList<E> implements LinkedList<E> {
     @Override
     public void clear() {
 
+        Node current = head;
+        while (current.next != null) {
+            Node next = current.next;
+            current.next = null;
+            current = next;
+        }
+        head = null;
+        tail = null;
+
     }
 
     @Override
     public boolean contains(E element) {
-        return false;
+
+        boolean contains = false;
+        Node current = head;
+        while (current != null) {
+            Node next = current.next;
+            if (current.element == element) {
+                contains = true;
+                break;
+            }
+            current = next;
+        }
+
+        return contains;
     }
 
     @Override
     public int size() {
-        return 0;
+        int counter = 0;
+        if (head != null) {
+            if (head == tail) {
+                counter = 1;
+            } else {
+                Node current = head;
+                while (current != null) {
+                    counter++;
+                    current = current.next;
+                }
+            }
+        }
+        return counter;
     }
 
     @Override
@@ -77,10 +149,10 @@ public class SinglyLinkedList<E> implements LinkedList<E> {
 
         Node current = head;
         if (current != null) {
-             while (current != null) {
-                 joiner.add(current.element.toString());
-                 current = current.next;
-             }
+            while (current != null) {
+                joiner.add(current.element.toString());
+                current = current.next;
+            }
         }
         builder.append(joiner);
         builder.append("]");
